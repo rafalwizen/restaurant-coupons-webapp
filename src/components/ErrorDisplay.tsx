@@ -24,14 +24,14 @@ const ErrorDisplay: React.FC<ErrorDisplayProps> = ({ message, onRetry }) => {
                     />
                 </svg>
             </div>
-            <p className="text-gray-800 text-lg font-medium mb-4">{message || 'Something went wrong'}</p>
+            <p className="text-gray-800 text-lg font-medium mb-4">{message || 'Coś poszło nie tak...'}</p>
 
             {onRetry && (
                 <button
                     onClick={onRetry}
                     className="bg-purple-700 text-white px-6 py-2 rounded-md hover:bg-purple-800 transition-colors"
                 >
-                    Try Again
+                    Spróbuj ponownie
                 </button>
             )}
         </div>

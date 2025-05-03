@@ -38,11 +38,11 @@ export default function HomePage() {
         );
         setTotalPages(calculatedTotalPages);
       } else {
-        setError(response.message || 'Failed to load coupons');
+        setError(response.message || 'Nie udało się załadować kuponów');
       }
     } catch (err) {
-      setError('Unable to load coupons. Please check your connection.');
-      console.error('Error loading coupons:', err);
+      setError('Nie można załadować kuponów. Sprawdź swoje połączenie.');
+      console.error('Błąd podczas ładowania kuponów:', err);
     } finally {
       setLoading(false);
     }
@@ -54,12 +54,11 @@ export default function HomePage() {
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
-    // Scroll to top when changing pages
     window.scrollTo(0, 0);
   };
 
   if (loading && coupons.length === 0) {
-    return <LoadingIndicator message="Loading coupons..." />;
+    return <LoadingIndicator message="Ładowanie kuponów..." />;
   }
 
   if (error && coupons.length === 0) {
@@ -69,7 +68,7 @@ export default function HomePage() {
   return (
       <main className="min-h-screen bg-gray-50">
         <div className="container mx-auto px-4 py-6">
-          <h1 className="text-2xl font-bold text-gray-800 mb-6">Restaurant Coupons</h1>
+          <h1 className="text-2xl font-bold text-gray-800 mb-6">Kupony restauracyjne</h1>
 
           {loading && (
               <div className="flex justify-center my-4">
@@ -79,7 +78,7 @@ export default function HomePage() {
 
           {coupons.length === 0 ? (
               <div className="bg-white rounded-lg shadow-md p-6 text-center">
-                <p className="text-gray-600 text-lg">No coupons available at the moment</p>
+                <p className="text-gray-600 text-lg">Brak dostępnych kuponów w tej chwili</p>
               </div>
           ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

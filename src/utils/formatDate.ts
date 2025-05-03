@@ -3,7 +3,7 @@
  */
 export function formatDate(dateString: string): string {
     const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', {
+    return date.toLocaleDateString('pl-PL', {
         year: 'numeric',
         month: 'long',
         day: 'numeric',
@@ -26,7 +26,7 @@ export function formatValidityPeriod(validFrom: string, validTo: string): string
     const isValid = isStillValid(validTo);
 
     if (!isValid) {
-        return 'EXPIRED';
+        return 'WYGASŁY';
     }
 
     const startDate = new Date(validFrom);
@@ -38,12 +38,12 @@ export function formatValidityPeriod(validFrom: string, validTo: string): string
         const daysRemaining = Math.ceil((endDate.getTime() - currentDate.getTime()) / (1000 * 60 * 60 * 24));
 
         if (daysRemaining === 1) {
-            return 'Expires today';
+            return 'Wygasa dzisiaj';
         } else {
-            return `Valid for ${daysRemaining} more days`;
+            return `Ważny jeszcze przez ${daysRemaining} dni`;
         }
     } else {
         // If the coupon is not yet active
-        return `Valid from ${formatDate(validFrom)} to ${formatDate(validTo)}`;
+        return `Ważny od ${formatDate(validFrom)} do ${formatDate(validTo)}`;
     }
 }

@@ -30,11 +30,11 @@ export default function CouponDetailPage() {
                 if (response.success && response.data) {
                     setCoupon(response.data);
                 } else {
-                    setError(response.message || 'Failed to load coupon details');
+                    setError(response.message || 'Nie udało się załadować szczegółów kuponu');
                 }
             } catch (err) {
-                setError('Unable to load coupon details. Please check your connection.');
-                console.error('Error loading coupon details:', err);
+                setError('Nie można załadować szczegółów kuponu. Sprawdź swoje połączenie.');
+                console.error('Błąd podczas ładowania szczegółów kuponu:', err);
             } finally {
                 setLoading(false);
             }
@@ -43,7 +43,7 @@ export default function CouponDetailPage() {
         if (couponId) {
             loadCouponDetail();
         } else {
-            setError('Invalid coupon ID');
+            setError('Nieprawidłowy identyfikator kuponu');
             setLoading(false);
         }
     }, [couponId]);
@@ -53,14 +53,13 @@ export default function CouponDetailPage() {
     };
 
     if (loading) {
-        return <LoadingIndicator message="Loading coupon details..." />;
+        return <LoadingIndicator message="Ładowanie szczegółów kuponu..." />;
     }
 
     if (error || !coupon) {
-        return <ErrorDisplay message={error || 'Coupon not found'} onRetry={() => router.back()} />;
+        return <ErrorDisplay message={error || 'Nie znaleziono kuponu'} onRetry={() => router.back()} />;
     }
 
-    // Check if the coupon is still valid
     const valid = isStillValid(coupon.validTo);
 
     return (
@@ -102,8 +101,8 @@ export default function CouponDetailPage() {
                     <div className="flex justify-between items-start mb-4">
                         <h1 className="text-2xl font-bold text-gray-800 mr-4">{coupon.name}</h1>
                         <div className="bg-purple-700 text-white px-3 py-2 rounded-lg text-center">
+                            <div className="text-xs font-medium">RABAT</div>
                             <div className="text-xl font-bold">{coupon.discountValue}%</div>
-                            <div className="text-xs font-medium">OFF</div>
                         </div>
                     </div>
 
@@ -112,23 +111,23 @@ export default function CouponDetailPage() {
                     }`}>
                         {valid
                             ? formatValidityPeriod(coupon.validFrom, coupon.validTo)
-                            : "EXPIRED"}
+                            : "WYGASŁY"}
                     </div>
 
                     <section className="mb-6">
-                        <h2 className="text-xl font-semibold text-gray-800 mb-2">Description</h2>
+                        <h2 className="text-xl font-semibold text-gray-800 mb-2">Opis</h2>
                         <p className="text-gray-600">{coupon.description}</p>
                     </section>
 
                     <section className="mb-6">
-                        <h2 className="text-xl font-semibold text-gray-800 mb-2">Validity Period</h2>
+                        <h2 className="text-xl font-semibold text-gray-800 mb-2">Okres ważności</h2>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
-                                <p className="text-gray-500 text-sm">Valid From</p>
+                                <p className="text-gray-500 text-sm">Ważny od</p>
                                 <p className="text-gray-800 font-medium">{formatDate(coupon.validFrom)}</p>
                             </div>
                             <div>
-                                <p className="text-gray-500 text-sm">Valid To</p>
+                                <p className="text-gray-500 text-sm">Ważny do</p>
                                 <p className="text-gray-800 font-medium">{formatDate(coupon.validTo)}</p>
                             </div>
                         </div>
@@ -136,7 +135,7 @@ export default function CouponDetailPage() {
 
                     {coupon.termsAndConditions && (
                         <section>
-                            <h2 className="text-xl font-semibold text-gray-800 mb-2">Terms & Conditions</h2>
+                            <h2 className="text-xl font-semibold text-gray-800 mb-2">Warunki</h2>
                             <p className="text-gray-600 text-sm">{coupon.termsAndConditions}</p>
                         </section>
                     )}
