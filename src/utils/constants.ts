@@ -1,8 +1,8 @@
 export const COLORS = {
-    primary: '#6d28d9', // Tailwind's purple-700
+    primary: '#c62328',
     background: '#ffffff',
-    text: '#1f2937', // Tailwind's gray-800
-    accent: '#ddd6fe', // Tailwind's purple-200
+    text: '#1f2937',
+    accent: '#ddd6fe',
     darkOverlay: 'rgba(0, 0, 0, 0.4)',
 };
 

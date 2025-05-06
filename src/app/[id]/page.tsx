@@ -100,7 +100,7 @@ export default function CouponDetailPage() {
                 <div className="bg-white rounded-lg shadow-lg p-6">
                     <div className="flex justify-between items-start mb-4">
                         <h1 className="text-2xl font-bold text-gray-800 mr-4">{coupon.name}</h1>
-                        <div className="bg-purple-700 text-white px-3 py-2 rounded-lg text-center">
+                        <div className="bg-custom text-white px-3 py-2 rounded-lg text-center">
                             <div className="text-xs font-medium">RABAT</div>
                             <div className="text-xl font-bold">{coupon.discountValue}%</div>
                         </div>

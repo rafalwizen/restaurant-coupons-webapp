@@ -24,7 +24,7 @@ const CouponCard: React.FC<CouponCardProps> = ({ coupon }) => {
                     <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/70 to-transparent" />
                     <div className="absolute bottom-0 left-0 right-0 p-4 flex justify-between items-end">
                         <h3 className="text-white font-bold text-lg line-clamp-2">{coupon.name}</h3>
-                        <div className="bg-purple-700 text-white px-2 py-1 rounded-lg text-sm font-bold">
+                        <div className="bg-custom text-white px-2 py-1 rounded-lg text-sm font-bold">
                             {coupon.discountValue}% TANIEJ
                         </div>
                     </div>

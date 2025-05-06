@@ -17,11 +17,17 @@ export default function RootLayout({
     return (
         <html lang="pl">
         <body className={inter.className}>
-        <header className="bg-purple-700 text-white py-4 shadow-md">
-            <div className="container mx-auto px-4">
-                <h1 className="text-xl font-bold">Kupony restauracyjne</h1>
+        <header
+            className="text-white shadow-md h-20 bg-repeat bg-center"
+            style={{ backgroundImage: "url('/background.png')", backgroundSize: "auto 100%" }}
+        >
+            <div className="container mx-auto px-4 h-full flex items-center gap-4">
+                <img src="/logo.png" alt="Logo" className="h-full w-auto max-h-full object-contain" />
             </div>
         </header>
+
+
+
 
         {children}
 

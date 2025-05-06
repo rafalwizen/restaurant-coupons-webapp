@@ -38,7 +38,7 @@ const Pagination: React.FC<PaginationProps> = ({
                     disabled={isLoading || i === currentPage}
                     className={`px-3 py-1 mx-1 rounded ${
                         i === currentPage
-                            ? 'bg-purple-700 text-white'
+                            ? 'bg-custom text-white'
                             : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                     } ${isLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
                 >
